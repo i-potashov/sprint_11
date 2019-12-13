@@ -1,0 +1,9 @@
+.place-card__container {
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+
+}
+
