@@ -1,4 +1,8 @@
-class PopupCard extends Popup {
+import Popup from "./popup";
+import Validate from "./validate";
+import Api from "./api";
+
+export default class PopupCard extends Popup {
     constructor(api, loadContent) {
         super();
         this.api = api;

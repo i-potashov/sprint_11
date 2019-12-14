@@ -1,4 +1,7 @@
-class PopupData extends Popup {
+import Popup from "./popup";
+import Validate from "./validate";
+
+export default class PopupData extends Popup {
     constructor(api) {
         super();
         this.api = api;

@@ -1,4 +1,7 @@
-class PopupAvatar extends Popup {
+import Popup from "./popup";
+import Validate from "./validate";
+
+export default class PopupAvatar extends Popup {
     constructor(api, photoContainer) {
         super();
         this.api = api;

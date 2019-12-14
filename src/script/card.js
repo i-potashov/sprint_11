@@ -1,4 +1,6 @@
-class Card {
+import PopupImage from "./popupImage";
+
+export default class Card {
     constructor(cardData, api) {
         this.api = api;
         this.cardData = cardData;

@@ -1,7 +1,6 @@
-class Api {
-    constructor(serverIp, userGroup, userKey) {
-        this.serverIp = serverIp;
-        this.userGroup = userGroup;
+export default class Api {
+    constructor(serverUrl, userKey) {
+        this.serverUrl = serverUrl;
         this.userKey = userKey;
         Api.idCheckFlag = false;
         Api.sendingCardId = '';
@@ -11,7 +10,7 @@ class Api {
 
     // Запрос карточек с сервера
     getInitialCards() {
-        return fetch(`${this.serverIp}${this.userGroup}/cards`, {
+        return fetch(`${this.serverUrl}/cards`, {
             method: 'GET',
             headers: {
                 authorization: this.userKey
@@ -34,7 +33,7 @@ class Api {
 
     // Получаем данные пользователя с сервера и подгружаем на страницу
     getUserInfo() {
-        return fetch(`${this.serverIp}${this.userGroup}/users/me`, {
+        return fetch(`${this.serverUrl}/users/me`, {
             method: 'GET',
             headers: {
                 authorization: this.userKey
@@ -57,7 +56,7 @@ class Api {
 
     // Отправляем данные пользователя на сервер
     sendUserInfo(namePost, aboutPost) {
-        return fetch(`${this.serverIp}${this.userGroup}/users/me`, {
+        return fetch(`${this.serverUrl}/users/me`, {
             method: 'PATCH',
             headers: {
                 authorization: this.userKey,
@@ -81,7 +80,7 @@ class Api {
 
     // Отправляем карточку на сервер
     sendNewCard(nameCard, linkCard) {
-        return fetch(`${this.serverIp}${this.userGroup}/cards`, {
+        return fetch(`${this.serverUrl}/cards`, {
             method: 'POST',
             headers: {
                 authorization: this.userKey,
@@ -111,7 +110,7 @@ class Api {
     }
 
     deleteCard(cardId) {
-        return fetch(`${this.serverIp}${this.userGroup}/cards/${cardId}`, {
+        return fetch(`${this.serverUrl}/cards/${cardId}`, {
             method: 'DELETE',
             headers: {
                 authorization: this.userKey
@@ -129,7 +128,7 @@ class Api {
     }
 
     insertLike(cardId) {
-        return fetch(`${this.serverIp}${this.userGroup}/cards/like/${cardId}`, {
+        return fetch(`${this.serverUrl}/cards/like/${cardId}`, {
             method: 'PUT',
             headers: {
                 authorization: this.userKey
@@ -147,7 +146,7 @@ class Api {
     }
 
     removeLike(cardId) {
-        return fetch(`${this.serverIp}${this.userGroup}/cards/like/${cardId}`, {
+        return fetch(`${this.serverUrl}/cards/like/${cardId}`, {
             method: 'DELETE',
             headers: {
                 authorization: this.userKey
@@ -165,7 +164,7 @@ class Api {
     }
 
     changeAvatar(avatarLink) {
-        return fetch(`${this.serverIp}${this.userGroup}/users/me/avatar`, {
+        return fetch(`${this.serverUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: {
                 authorization: this.userKey,
@@ -186,84 +185,3 @@ class Api {
             .catch(error => console.log('Ошибка при смене аватара', error));
     }
 }
-
-/**
- * Здравствуйте.
- *
- * Я буду писать здесь, потому что работа в основном касается этого класса.
- *
- * Что надо исправить:
- * Ненадо в классе прописывать http://95.216.175.5 ip может поменятся и надо будет прописывать в нескольких местах
- * Класс вообше не должен знать об IP
- *
- * Класс не должен уметь отрисовавыть карточки или управлять DOM
- * удалить
- *                 this.mainContent = result; // Получаем массив карточек
- this.newCardList(); // Созаем класс создания карточек
- this.renderInitialCards(); // Отрисовываем карточки
- *
- * Удалить
- *                 apiControl.receivedOwner = Object.assign(result);
- this.containerUserName.textContent = result.name;
- this.containerUserJob.textContent = result.about;
- this.containerUserPhoto.style.backgroundImage = `url(${result.avatar})`;
- * и так далее...
- * Для этого есть другие классы которые как раз и должны этим заниматься.
- *
- * Прописали .catch(); но он ничего не делает
- *
- * Удалить методы
- *     newCardList() {
-        renderInitialCards()
-        они никакого отношения к классу не имеют
- *
- * Непонятна роль метода checkDataValue()
- *
- * Очень много параметров
- *   constructor(userGroup, userKey, jobContainer, nameContainer, avatarContainer, placesContainer)
- * Максимум 3-4 https://refactoring.guru/ru/smells/long-parameter-list
- *
- *
- * В валидации метод checkInput(e) очень сложный для восприятия
- * Решение, разбить на небольшие
- *
- *
- *
- */
-
-
-/**
- * Снова здравствуйте.
- * Теперь у вас класс работает в одну сторону. То есть Вы не знаете что он делает
- * Загружаете сайт, отключаете интернет и делаете лайк, или меняете информацию в профиле и всё работает
- * А работать не должно. Интернета нет.
- * Надо чтобы класс возвращал на место вызова метода после того как получит ответ и использовал данные для формирования
- * контента.
- *
- * Удаление карточки тоже без интернета отработало
- *
- */
-
-/*
-Ответ:
-Здравствуйте, исправил:
-При отсутствии интернета нельзя отправить:
-1. Карточку нельзя отправить
-2. Лайк нельзя поставить или снять
-3. Карточку нельзя удалить
-4. Профиль нельзя обновить
- */
-
-/**
- * Принимается
- *
- * В валидации в методе     checkInput(e)  у вас слишком много условий, это плохо
- * в этой переменной нет смысла
- *  this.template = null;
- *
- * Шаблон бы я вынес в отдельный метод, только шаблон
- * Могу долго рассписывать, но всё придёт с опытом
- *
- * @koras
- *
- */

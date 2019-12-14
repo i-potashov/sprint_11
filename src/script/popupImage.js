@@ -1,4 +1,6 @@
-class PopupImage extends Popup {
+import Popup from "./popup";
+
+export default class PopupImage extends Popup {
     constructor(imageLink) {
         super();
         this.imageLink = imageLink;
