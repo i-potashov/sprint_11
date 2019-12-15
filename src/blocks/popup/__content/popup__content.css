@@ -1,0 +1,14 @@
+@import url('_data/popup__content_data.css');
+@import url('_image/popup__content_image.css');
+
+.popup__content {
+
+  position: relative;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 540px) {
+  .popup__content {
+    width: calc(100% - 60px);
+  }
+}

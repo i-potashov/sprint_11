@@ -1,0 +1,9 @@
+@import url('_data/popup__close_data.css');
+@import url('_place/popup__close_place.css');
+@import url('_image/popup__close_image.css');
+
+.popup__close {
+  width: 26px;
+  position: absolute;
+  cursor: pointer;
+}
