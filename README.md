@@ -5,9 +5,6 @@
 ### Introduction
 The project includes the ability to customize the user data of the page and add image cards, followed by the ability to like and delete the card added by the user.
 
-### Install
-The sprint_12 was created on the [Node.js](https://nodejs.org/) v12+.
-
 **Start project:**
 ```sh
 $ npm install
@@ -32,4 +29,3 @@ $ npm run deploy
 ### License
 
 MIT
-
