@@ -1,6 +1,6 @@
 {
   "name": "sprint_11",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/i-potashov/sprint_11.git"
   },
-  "author": "i-potashov",
-  "license": "ISC",
+  "author": "I.Potashov",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/i-potashov/sprint_11/issues"
   },
